@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <style>
+        /* Estilo global */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #000000; /* Fundo preto */
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        /* Container do card */
+        .container {
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            text-align: center;
+            width: 80%;
+            max-width: 400px;
+        }
+
+        /* Estilo do título */
+        h1 {
+            color: #28a745;
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        /* Estilo do texto */
+        p {
+            font-size: 1.1em;
+            color: #555;
+        }
+
+        /* Botão de logout */
+        a {
+            color: #28a745;
+            font-weight: bold;
+            text-decoration: none;
+            border: 2px solid #28a745;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 1.2em;
+            display: inline-block;
+            margin-top: 20px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        /* Efeito de hover do botão */
+        a:hover {
+            background-color: #28a745;
+            color: #fff;
+        }
+
+        /* Responsividade para dispositivos móveis */
+        @media (max-width: 600px) {
+            .container {
+                padding: 30px;
+                width: 90%;
+            }
+
+            h1 {
+                font-size: 1.6em;
+            }
+
+            p {
+                font-size: 1em;
+            }
+
+            a {
+                font-size: 1.1em;
+                padding: 8px 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Card com conteúdo -->
+    <div class="container">
+        <h1>Bem-vindo para casa!</h1>
+        <p>Login com sucesso! Você está na página inicial.</p>
+        <a href="http://127.0.0.1:5000/login">Sair</a>
+    </div>
+
+</body>
+</html>

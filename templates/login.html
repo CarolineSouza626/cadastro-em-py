@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        /* Estilo global */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #000000; /* Fundo preto */
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        /* Container do card */
+        .container {
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            text-align: center;
+            width: 80%;
+            max-width: 400px;
+        }
+
+        /* Título */
+        h1 {
+            color: #28a745;
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        /* Campos de input */
+        input[type="email"], input[type="password"] {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1.1em;
+        }
+
+        /* Botão de login */
+        button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 5px;
+            font-size: 1.2em;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.3s;
+        }
+
+        /* Efeito de hover no botão */
+        button:hover {
+            background-color: #218838;
+        }
+
+        /* Link para o cadastro */
+        .cadastro-link {
+            color: #28a745;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 20px;
+            display: block;
+            font-size: 1.1em;
+        }
+
+        .cadastro-link:hover {
+            color: #218838;
+        }
+
+        /* Responsividade para dispositivos móveis */
+        @media (max-width: 600px) {
+            .container {
+                padding: 30px;
+                width: 90%;
+            }
+
+            h1 {
+                font-size: 1.6em;
+            }
+
+            input[type="email"], input[type="password"] {
+                font-size: 1em;
+            }
+
+            button {
+                font-size: 1.1em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Card de Login -->
+    <div class="container">
+        <h1>Login</h1>
+        
+        <form id="loginForm">
+            <input type="email" id="emailLogin" placeholder="Digite seu e-mail" required>
+            <input type="password" id="senhaLogin" placeholder="Digite sua senha" required>
+            <button type="submit">Entrar</button>
+        </form>
+        
+        <a href="/cadastro" class="cadastro-link">Ainda não tem uma conta? Cadastre-se aqui</a>
+    </div>
+
+    <script>
+        // Login de usuário
+        document.getElementById("loginForm").addEventListener("submit", async function(event) {
+            event.preventDefault();
+
+            const credenciais = {
+                email: document.getElementById("emailLogin").value,
+                senha: document.getElementById("senhaLogin").value
+            };
+
+            const response = await fetch("http://127.0.0.1:5000/usuarios/login", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(credenciais)
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                alert(data.mensagem);
+                window.location.replace('/home');  // Redirecionar para a página home
+            } else {
+                alert("Erro: " + data.erro);
+            }
+        });
+    </script>
+
+</body>
+</html>
