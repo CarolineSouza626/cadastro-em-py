@@ -1,1 +1,1 @@
-Para python app.py
+Para rodar python app.py
